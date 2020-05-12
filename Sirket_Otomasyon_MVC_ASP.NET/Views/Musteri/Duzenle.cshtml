@@ -1,0 +1,21 @@
+﻿@model Sirket_Otomasyon_MVC_ASP.NET.Models.Musteri
+
+@{
+    ViewBag.Title = "Duzenle";
+}
+
+<h2>Duzenle</h2>
+
+@using (Html.BeginForm("Duzenle", "Musteri", FormMethod.Post))
+{
+@Html.HiddenFor(m => m.musteriId) //burada güncelleme için id yi gizleyerek tutarız
+    <div class="form-group">
+        @Html.LabelFor(m => m.musteriAd) <!--html hlpr modellenerek gelmesini de saplıyor-->
+        @Html.TextBoxFor(m => m.musteriAd, new { @class = "form-control" }) <!--helpers ile class ekleme-->
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.musteriSoyad)
+        @Html.TextBoxFor(m => m.musteriSoyad, new { @class = "form-control" })
+    </div>
+    <input type="submit" name="btnDuzenle" value="Düzenle" class="btn btn-success" />
+}

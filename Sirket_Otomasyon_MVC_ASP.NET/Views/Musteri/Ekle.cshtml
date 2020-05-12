@@ -1,0 +1,25 @@
+﻿@using Sirket_Otomasyon_MVC_ASP.NET.Models
+
+    @model  Musteri
+@{
+    ViewBag.Title = "Ekle";
+}
+
+<h2>Ekle</h2>
+
+@using (@Html.BeginForm("Ekle", "Musteri", FormMethod.Post)) /*Formun kapanış etiketi için using
+                                                          html helpersları IIS server yorumluyor*/
+{
+<div class="form-group">
+    @Html.LabelFor(m => m.musteriAd) <!--html hlpr modellenerek gelmesini de saplıyor-->
+    @Html.TextBoxFor(m => m.musteriAd, new { @class="form-control"} ) <!--helpers ile class ekleme-->
+    @Html.ValidationMessageFor(m=>m.musteriAd) <!--boş girilen değer varsa mesaj göster-->
+</div>
+<div class="form-group">
+    @Html.LabelFor(m => m.musteriSoyad)
+    @Html.TextBoxFor(m => m.musteriSoyad, new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.musteriAd)
+    
+</div>
+  <input type="submit" name="btnKaydet" value="Kayıt" class="btn btn-success" />
+}
