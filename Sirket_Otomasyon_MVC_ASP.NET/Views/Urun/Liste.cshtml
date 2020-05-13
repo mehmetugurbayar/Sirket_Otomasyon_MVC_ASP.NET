@@ -1,0 +1,37 @@
+﻿@using Sirket_Otomasyon_MVC_ASP.NET.Models
+@model IEnumerable<Urun>
+
+@{
+    ViewBag.Title = "Ürünlerin Listesi";
+}
+
+<h2>Liste</h2>
+
+
+<table class="table tab-content">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Ürün Kodu</th>
+            <th>Ürün Adı</th>
+            <th>Ürün Stok Miktarı</th>
+            <th>Ürün Fiyatı</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)//return view(musteriler)den gelen modelin elemanlarını iteme atıp donuyor
+        {
+            <tr>
+                <td>@item.urunId</td>
+                <td>@item.urunKodu</td>
+                <td>@item.urunAd</td>
+                <td>@item.stokMik</td>
+                <td>@item.fiyat</td>
+                <td><a href="/Urun/Duzenle/@item.urunId" class="btn btn-sm btn-primary">Edit</a> <a href="/Urun/Sil/@item.urunId" class="btn btn-sm btn-danger" onclick="return confirm('Bu Ürünü silmek istedğinizden emin misini?')">Delete</a></td>
+                <!--   actiondan parametre istemiştik burada gönderiyorız-->
+            </tr>
+        }
+    </tbody>
+</table>
+

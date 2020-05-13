@@ -12,10 +12,10 @@ namespace Sirket_Otomasyon_MVC_ASP.NET.Controllers
 {
     public class MusteriController : Controller
     {
-        MusteriContext ctx;
+        SirketContext ctx;
         // GET: Musteri //url ye Musteri yazdığında çalışacak olan action Index
         public ActionResult Index()
-        { 
+        {
             return View();
         }
         #region FormCollectionEkle
@@ -32,56 +32,70 @@ namespace Sirket_Otomasyon_MVC_ASP.NET.Controllers
 
         #endregion
 
-      public ActionResult Ekle()
+        public ActionResult Yorum()
+        {
+            return View();
+        }
+        public ActionResult Ekle()
         {
             return View();
         }
         [HttpPost]
         public ActionResult Ekle(Musteri m)
         {
-            try
+            if (Session["kullanici"]!=null)
             {
-                if (ModelState.IsValid) //geçerli bir değermi
+                try
                 {
-
-                    using (ctx = new MusteriContext())
+                    if (ModelState.IsValid) //geçerli bir değermi ekrandaki hata mesjlarını göstermek için validation için
                     {
-                        ctx.Musteriler.Add(m);
 
-                        if (ctx.SaveChanges() > 0)
+                        using (ctx = new SirketContext())
                         {
-                            return RedirectToAction("Liste");//farklı bir controlle veya actiona yönlendirme
+                            ctx.Musteriler.Add(m);
+
+                            if (ctx.SaveChanges() > 0)
+                            {
+                                return RedirectToAction("Liste");//farklı bir controlle veya actiona yönlendirme
+                            }
+                            //ctx.SaveChanges();
+
                         }
-                        ctx.SaveChanges();
-
-                    } 
+                    }
+                  
                 }
-                return View();
+                catch (DbEntityValidationException)
+                {
+                    Response.Write("hata"); //entity validation hatası deneme
+                    throw;
+                }
             }
-            catch (DbEntityValidationException) 
+            else
             {
-                Response.Write("hata"); //entity validation hatası deneme
-                throw;
+                Response.Redirect("Admin/Login");
+               
             }
+            
+               return View();
 
 
-        }     
+        }
         public ActionResult Liste()
         {
-            using (ctx= new MusteriContext())
+            using (ctx = new SirketContext())
             {
-               var musteriler = ctx.Musteriler.ToList(); // dbseti to list diyip listeye çeviriyıruz
+                var musteriler = ctx.Musteriler.ToList(); // dbseti to list diyip listeye çeviriyıruz
                 return View(musteriler); //sayfaya musterileri yani tabloyu döndürürü.
             }
 
         }
 
-        [HttpGet] 
+        [HttpGet]
         public ActionResult Duzenle(int? id) //nullable id değerini aldık hangi eleman olduğubu anlamak için
         {
-            using (ctx= new MusteriContext())
+            using (ctx = new SirketContext())
             {
-               var musteri= ctx.Musteriler.Find(id);
+                var musteri = ctx.Musteriler.Find(id);
                 return View(musteri);
             }
         }
@@ -89,14 +103,14 @@ namespace Sirket_Otomasyon_MVC_ASP.NET.Controllers
         [HttpPost]
         public ActionResult Duzenle(Musteri m)//musterinin dbset de musterinin statesinin değiştirilmesi lazım
         {
-            using (ctx = new MusteriContext())
+            using (ctx = new SirketContext())
             {
                 //giriş metoduna m atıp durumunu değiştirildi yapaırz
-                ctx.Entry(m).State = EntityState.Modified; 
+                ctx.Entry(m).State = EntityState.Modified;
 
-                if (ctx.SaveChanges()>0)
+                if (ctx.SaveChanges() > 0)
                 {
-                    
+
                     return RedirectToAction("Liste");
                 }
                 return View();
@@ -106,14 +120,14 @@ namespace Sirket_Otomasyon_MVC_ASP.NET.Controllers
 
         public ActionResult Sil(int? id)
         {
-            using (ctx = new MusteriContext())
+            using (ctx = new SirketContext())
             {
                 ctx.Musteriler.Remove(ctx.Musteriler.Find(id));
 
                 ctx.SaveChanges();
-                    return RedirectToAction("Liste");
-                
-                
+                return RedirectToAction("Liste");
+
+
 
             }
 

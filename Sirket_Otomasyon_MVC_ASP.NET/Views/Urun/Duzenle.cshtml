@@ -1,0 +1,59 @@
+﻿@model Sirket_Otomasyon_MVC_ASP.NET.Models.Urun
+
+@{
+    ViewBag.Title = "Duzenle";
+}
+
+<h2>Duzenle</h2>
+
+
+@using (Html.BeginForm("Duzenle", "Urun", FormMethod.Post))
+{
+    @Html.HiddenFor(u => u.urunId)
+    <div class="col">
+        @Html.LabelFor(u => u.urunKodu)
+        @Html.TextBoxFor(u => u.urunKodu, new { @class = "form-control" })
+        @Html.ValidationMessageFor(u => u.urunKodu)
+        <label id="lblKodHata" style="display:none;color:red">Bu alan boş olamaz!</label>
+    </div>
+    <div class="col">
+        @Html.LabelFor(u => u.urunAd)
+        @Html.TextBoxFor(u => u.urunAd, new { @class = "form-control" })
+        @Html.ValidationMessageFor(u => u.urunAd)
+        <label id="lblAdHata" style="display:none;color:red">Bu alan boş olamaz!</label>
+    </div>
+    <div class="col">
+        @Html.LabelFor(u => u.stokMik)
+        @Html.TextBoxFor(u => u.stokMik, new { @class = "form-control" })
+        @Html.ValidationMessageFor(u => u.stokMik)
+        <label id="lblStokHata" style="display:none;color:red">Bu alan boş olamaz!</label>
+    </div>
+    <div class="col">
+        @Html.LabelFor(u => u.fiyat)
+        @Html.TextBoxFor(u => u.fiyat, new { @class = "form-control" })
+        @Html.ValidationMessageFor(u => u.fiyat)
+        <label id="lblFiyatHata" style="display:none;color:red">Bu alan boş olamaz!</label>
+    </div>
+    <input type="submit" name="btnDuzenle" value="Düzenle" class="btn btn-success" />
+
+}
+
+@section scripts{
+    <script>
+        function Validation() { //JQUERYclient side validation
+            var hatayok = true; //hata yok
+            if ($("#urunKodu").val() == "" || $("#urunAd").val() == "" ||
+                $("#stokMil").val() == "" || $("#fiyat").val() == "") {
+                $("#lblKodHata").show(); //display kısmını show yapar
+                $("#lblAdHata").show();
+                $("#lblStokHata").show();
+                $("#lblFiyatHata").show();
+                hatayok = false; //hata var
+            }
+            return hatayok;
+        }
+
+
+    </script>
+}
+

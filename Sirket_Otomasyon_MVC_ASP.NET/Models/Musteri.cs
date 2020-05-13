@@ -10,11 +10,18 @@ namespace Sirket_Otomasyon_MVC_ASP.NET.Models
     {
         public int musteriId { get; set; }
         [Display(Name = "Müşteri Adı")] //bu modelimiz html de görüneni değiştirdik
-        [Required] //Boş değer null girilmez
+        [Required(ErrorMessage ="Müşteri adı boş olamaz!")] //Boş değer null girilmez //mesaj özelleştirildi
         public string musteriAd { get; set; }
 
         [Display(Name = "Müşteri Soyadı")]
-        [Required]
+        [Required(ErrorMessage = "Müşteri Soyadı boş olamaz!")]
         public string musteriSoyad { get; set; }
+
+        [Display(Name = "Müşteri Adres")]
+        [Required(ErrorMessage = "Müşteri telefonu boş olamaz!")]
+        public string musteriTel{ get; set; }
+        [Display(Name = "Müşteri Telefon")]
+        [Required(ErrorMessage = "Müşteri adresi boş olamaz!")]
+        public string musteriAdres { get; set; }
     }
 }

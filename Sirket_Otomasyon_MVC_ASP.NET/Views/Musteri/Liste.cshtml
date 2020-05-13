@@ -12,19 +12,23 @@
             <th>Id</th>
             <th>Ad</th>
             <th>Soyad</th>
+            <th>Telefon</th>
+            <th>Adres</th>
             <th>İşlemler</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)//return view(musteriler)den gelen modelin elemanlarını iteme atıp donuyor
         {
-            <tr>
-                <td>@item.musteriId</td>
-                <td>@item.musteriAd</td>
-                <td>@item.musteriSoyad</td>
-                <td><a href="/Musteri/Duzenle/@item.musteriId" class="btn btn-sm btn-primary">Edit</a> <a href="/Musteri/Sil/@item.musteriId"class="btn btn-sm btn-danger" onclick="return confirm('Bu müşteriyi silmek istedğinizden emin misini?')">Delete</a></td>
-                <!--   actiondan parametre istemiştik burada gönderiyorız-->
-            </tr>
+        <tr>
+            <td>@item.musteriId</td>
+            <td>@item.musteriAd</td>
+            <td>@item.musteriSoyad</td>
+            <td>@item.musteriTel</td>
+            <td>@item.musteriAdres</td>
+            <td><a href="/Musteri/Duzenle/@item.musteriId" class="btn btn-sm btn-primary">Edit</a> <a href="/Musteri/Sil/@item.musteriId" class="btn btn-sm btn-danger" onclick="return confirm('Bu müşteriyi silmek istedğinizden emin misini?')">Delete</a></td>
+            <!--   actiondan parametre istemiştik burada gönderiyorız-->
+        </tr>
         }
     </tbody>
 </table>

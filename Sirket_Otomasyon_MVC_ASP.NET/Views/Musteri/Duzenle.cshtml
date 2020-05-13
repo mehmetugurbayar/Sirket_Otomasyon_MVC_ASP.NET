@@ -6,16 +6,55 @@
 
 <h2>Duzenle</h2>
 
-@using (Html.BeginForm("Duzenle", "Musteri", FormMethod.Post))
+@using (@Html.BeginForm("Duzenle", "Musteri", FormMethod.Post))
+
 {
-@Html.HiddenFor(m => m.musteriId) //burada güncelleme için id yi gizleyerek tutarız
+    @Html.HiddenFor(m => m.musteriId)
     <div class="form-group">
-        @Html.LabelFor(m => m.musteriAd) <!--html hlpr modellenerek gelmesini de saplıyor-->
-        @Html.TextBoxFor(m => m.musteriAd, new { @class = "form-control" }) <!--helpers ile class ekleme-->
+        @Html.LabelFor(m => m.musteriAd) 
+        @Html.TextBoxFor(m => m.musteriAd, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.musteriAd) 
+        <label id="lblAdHata" style="display:none;color:red">Bu alan boş olamaz!</label> 
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.musteriSoyad)
         @Html.TextBoxFor(m => m.musteriSoyad, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.musteriSoyad)
+        <label id="lblSoyadHata" style="display:none;color:red;">Bu alan boş olamaz!</label>
     </div>
-    <input type="submit" name="btnDuzenle" value="Düzenle" class="btn btn-success" />
+
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.musteriTel)
+        @Html.TextBoxFor(m => m.musteriTel, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.musteriTel)
+        <label id="lblTelHata" style="display:none;color:red;">Bu alan boş olamaz!</label>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.musteriAdres)
+        @Html.TextAreaFor(m => m.musteriAdres, new { @class = "form-control", @rows = "3" })
+        @Html.ValidationMessageFor(m => m.musteriAdres)
+        <label id="lblAdresHata" style="display:none;color:red;">Bu alan boş olamaz!</label>
+    </div>
+
+
+    
+    <input type="submit" name="btnKaydet" value="Değiştir" class="btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect " onclick="return Validation()" />
+}
+
+@section scripts{
+    <script>
+        function Validation() { //JQUERYclient side validation
+            var hatayok = true; //hata yok
+            if ($("#musteriAd").val() == "" || $("#musteriSoyad").val() == "" ||
+                $("#musteriTel").val() == "" || $("#musteriAdres").val() == "") {
+                $("#lblAdHata").show(); //display kısmını show yapar
+                $("#lblSoyadHata").show();
+                $("#lblTelHata").show();
+                $("#lblAdresHata").show();
+                hatayok = false; //hata var
+            }
+            return hatayok;
+        }
+    </script>
 }
