@@ -5,41 +5,40 @@
 
 
 
-
 @using (@Html.BeginForm("Login", "Admin", FormMethod.Post))
 
-{
-    <div id="login">
-        <h3 class="text-center text-white pt-5">Giriş Paneli</h3>
-        <div class="container">
-            <div id="login-row" class="row justify-content-center align-items-center">
-                <div id="login-column" class="col-md-6">
-                    <div id="login-box" class="col-md-12">
-                        <form id="login-form" class="form" action="" method="post">
-                           
-                            <div class="form-group">
-                                @Html.LabelFor(a => a.adminKulAd)
-                                @Html.TextBoxFor(a => a.adminKulAd, new { @class = "form-control" })
-                                @Html.ValidationMessageFor(a => a.adminKulAd)
-                                <label id="lblAdHata" style="display:none;color:red">Bu alan boş olamaz!</label>
-                            </div>
-                            <div class="form-group">
-                                @Html.LabelFor(a => a.adminKulSif)
-                                @Html.PasswordFor(a => a.adminKulSif,new { @class = "form-control" })
-                                @Html.ValidationMessageFor(a => a.adminKulSif)
-                                <label id="lblSifHata" style="display:none;color:red;">Bu alan boş olamaz!</label>
+    {
+        <div id="login">
+            <h3 class="text-center text-white pt-5">Giriş Paneli</h3>
+            <div class="container">
+                <div id="login-row" class="row justify-content-center align-items-center">
+                    <div id="login-column" class="col-md-6">
+                        <div id="login-box" class="col-md-12">
+                            <form id="login-form" class="form" action="" method="post">
 
-                            </div>
-                            <input type="submit" name="btnGiris" value="Giriş" class="btn btn-info btn-md" />
-                            
-                        </form>
+                                <div class="form-group">
+                                    @Html.LabelFor(a => a.adminKulAd)
+                                    @Html.TextBoxFor(a => a.adminKulAd, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(a => a.adminKulAd)
+                                    <label id="lblAdHata" style="display:none;color:red">Bu alan boş olamaz!</label>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(a => a.adminKulSif)
+                                    @Html.PasswordFor(a => a.adminKulSif, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(a => a.adminKulSif)
+                                    <label id="lblSifHata" style="display:none;color:red;">Bu alan boş olamaz!</label>
+
+                                </div>
+                                <input type="submit" name="btnGiris" value="Giriş" class="btn btn-info btn-md" />
+
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
+    }
 }
 
 
-    

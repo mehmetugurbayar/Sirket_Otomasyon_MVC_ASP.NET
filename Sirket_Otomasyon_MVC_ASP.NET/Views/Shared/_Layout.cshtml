@@ -23,8 +23,13 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li> <!--MENÜ ELEMANI VE LİNK EKLEME-->
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Musteri Ekle", "Ekle", "Musteri")</li>
-                    <li>@Html.ActionLink("Musteri Liste", "Liste", "Musteri")</li>
+                   
+                    @if ((Session["kullanici"] != null)&&(Session["sifre"] != null))/*Oturum açılmışsa menü elemanlaı açılır*/
+                    {
+
+                        <li>@Html.ActionLink("Musteri Ekle", "Ekle", "Musteri")</li>
+                        <li>@Html.ActionLink("Musteri Liste", "Liste", "Musteri")</li>
+                    }
 
                 </ul>
             </div>

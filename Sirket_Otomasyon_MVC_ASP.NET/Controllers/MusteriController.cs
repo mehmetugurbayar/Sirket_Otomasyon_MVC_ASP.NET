@@ -34,18 +34,24 @@ namespace Sirket_Otomasyon_MVC_ASP.NET.Controllers
 
         public ActionResult Yorum()
         {
+
             return View();
         }
-        public ActionResult Ekle()
+        public ActionResult Ekle() //GET KISMI, İSTEK KISMI
         {
+            if ((Session["kullanici"] == null)||(Session["sifre"] == null))
+                // admindecontroller da eklediğmiz session boş ise login sayfasına git
+            {
+                return RedirectToAction("Login", "Admin");
+            }
+
             return View();
         }
         [HttpPost]
         public ActionResult Ekle(Musteri m)
         {
-            if (Session["kullanici"]!=null)
-            {
-                try
+           
+            try
                 {
                     if (ModelState.IsValid) //geçerli bir değermi ekrandaki hata mesjlarını göstermek için validation için
                     {
@@ -69,14 +75,9 @@ namespace Sirket_Otomasyon_MVC_ASP.NET.Controllers
                     Response.Write("hata"); //entity validation hatası deneme
                     throw;
                 }
-            }
-            else
-            {
-                Response.Redirect("Admin/Login");
-               
-            }
-            
-               return View();
+          
+
+            return View();
 
 
         }
