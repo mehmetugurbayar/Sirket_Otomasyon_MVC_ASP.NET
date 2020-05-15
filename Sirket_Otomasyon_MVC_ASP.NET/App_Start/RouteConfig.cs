@@ -13,12 +13,15 @@ namespace Sirket_Otomasyon_MVC_ASP.NET
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+           
+
             routes.MapRoute( //rotalar.Yenirota -- yeni rota eklerken bu şekilde
                 name: "Default",
                 url: "{controller}/{action}/{id}", //url pattern i
+                
                 defaults: new { controller = "Admin", action = "Login", id = UrlParameter.Optional }
+              
 
-             
             );
 
            

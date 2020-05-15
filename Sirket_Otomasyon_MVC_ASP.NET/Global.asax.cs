@@ -21,6 +21,8 @@ namespace Sirket_Otomasyon_MVC_ASP.NET
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters); //programý mvc project olarak açýnca eklendiler
           
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+
         }
     }
 }

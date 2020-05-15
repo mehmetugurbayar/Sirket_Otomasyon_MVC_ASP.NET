@@ -1,15 +1,17 @@
 ﻿@model Sirket_Otomasyon_MVC_ASP.NET.Models.Admin
+
 @{
-    ViewBag.Title = "Giriş Sayfası";
+    ViewBag.Title = "Login";
 }
 
+<h2>Login</h2>
 
 
 @using (@Html.BeginForm("Login", "Admin", FormMethod.Post))
 
 {
     <div id="login">
-        <h3 class="text-center text-white pt-5">Giriş Paneli</h3>
+        <h3 class="text-center text-white pt-5">Giriş Paneli Area</h3>
         <div class="container">
             <div id="login-row" class="row justify-content-center align-items-center">
                 <div id="login-column" class="col-md-6">
@@ -29,7 +31,7 @@
                                 <label id="lblSifHata" style="display:none;color:red;">Bu alan boş olamaz!</label>
 
                             </div>
-                            <input type="submit" name="btnGiris" value="Giriş" class="btn btn-info btn-md" onclick="return Validation()"/>
+                            <input type="submit" name="btnGiris" value="Giriş" class="btn btn-info btn-md" onclick="return Validation()" />
 
                         </form>
                     </div>
@@ -41,20 +43,17 @@
 }
 
 
-
-
 @section scripts{
     <script>
-        function Validation() { 
-            var hatayok = true; 
-            if ($("#adminKulAd").val() == "" || $("#adminKulSif").val() == "")
-                {
-                $("#lblAdHata").show(); 
+        function Validation() {
+            var hatayok = true;
+            if ($("#adminKulAd").val() == "" || $("#adminKulSif").val() == "") {
+                $("#lblAdHata").show();
                 $("#lblSifHata").show();
-                
+
                 hatayok = false;
             }
-          return hatayok;
-    }
+            return hatayok;
+        }
     </script>
-    }
+}
