@@ -16,7 +16,7 @@ namespace Sirket_Otomasyon_MVC_ASP.NET
             routes.MapRoute( //rotalar.Yenirota -- yeni rota eklerken bu şekilde
                 name: "Default",
                 url: "{controller}/{action}/{id}", //url pattern i
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Admin", action = "Login", id = UrlParameter.Optional }
 
              
             );
