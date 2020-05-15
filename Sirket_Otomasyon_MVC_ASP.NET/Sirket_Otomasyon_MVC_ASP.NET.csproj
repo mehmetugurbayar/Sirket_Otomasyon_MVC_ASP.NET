@@ -180,6 +180,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MusteriController.cs" />
     <Compile Include="Controllers\UrunController.cs" />
+    <Compile Include="Controllers\YorumController.cs" />
     <Compile Include="DAL\SirketContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -188,6 +189,7 @@
     <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\Musteri.cs" />
     <Compile Include="Models\Urun.cs" />
+    <Compile Include="Models\Yorum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -646,10 +648,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\Deneme.cshtml" />
     <Content Include="Views\Musteri\Ekle.cshtml" />
     <Content Include="Views\Musteri\Liste.cshtml" />
     <Content Include="Views\Musteri\Duzenle.cshtml" />
@@ -657,7 +656,8 @@
     <Content Include="Views\Urun\Ekle.cshtml" />
     <Content Include="Views\Urun\Liste.cshtml" />
     <Content Include="Views\Urun\Duzenle.cshtml" />
-    <Content Include="Views\Musteri\Yorum.cshtml" />
+    <Content Include="Views\Yorum\Yorum.cshtml" />
+    <Content Include="Views\Yorum\Oku.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

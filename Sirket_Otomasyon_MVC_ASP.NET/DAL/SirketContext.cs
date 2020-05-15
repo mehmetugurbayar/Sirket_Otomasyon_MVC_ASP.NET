@@ -17,6 +17,8 @@ namespace Sirket_Otomasyon_MVC_ASP.NET.DAL
         public DbSet<Urun> Urunler { get; set; }
         public DbSet<Admin> Adminler { get; set; } 
 
+        public DbSet<Yorum> Yorumlar { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             //fluent api dir
@@ -40,6 +42,11 @@ namespace Sirket_Otomasyon_MVC_ASP.NET.DAL
 
             modelBuilder.Entity<Admin>().Property(a => a.adminKulAd).HasMaxLength(15).HasColumnType("varchar").IsRequired();
             modelBuilder.Entity<Admin>().Property(a => a.adminKulSif).HasMaxLength(15).HasColumnType("varchar").IsRequired();
+
+            modelBuilder.Entity<Yorum>().ToTable("yorumlarTbl");
+
+            modelBuilder.Entity<Yorum>().Property(y => y.yorumBaslik).HasMaxLength(25).HasColumnType("varchar").IsRequired();
+            modelBuilder.Entity<Yorum>().Property(y => y.yorum).HasMaxLength(150).HasColumnType("varchar").IsRequired();
         }
 
     }

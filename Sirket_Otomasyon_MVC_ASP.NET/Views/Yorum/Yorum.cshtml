@@ -1,0 +1,52 @@
+﻿@using Sirket_Otomasyon_MVC_ASP.NET.Models
+@model Yorum
+
+
+@{
+    ViewBag.Title = "Yorum";
+}
+
+<h2>Yorum</h2>
+
+
+
+
+@using (@Html.BeginForm("Yorum", "Yorum", FormMethod.Post))
+{
+    @Html.LabelFor(y => y.yorumBaslik);
+    @Html.TextBoxFor(y => y.yorumBaslik, new { @class = "form-input", placeholder = "Yorum Başlığı" , maxlength=25})
+    <br />
+    <br />
+
+    @Html.LabelFor(y => y.yorum);
+    @Html.TextAreaFor(y => y.yorum, new { @id = "yorum"})
+    @Html.ValidationMessageFor(y => y.yorum)
+<label id="lblCliYorumHata" style="display:none;color:red;">Boş yorum gönderemezsiniz</label>
+    
+
+    <input type="submit" name="btnKaydet" value="Yorum Ekle" class="btn btn-success" onclick="return hata" />
+
+}
+
+
+<script src="~/ckeditor/plugins/forms/dialogs/textarea.js"></script>
+
+<script src="~/ckeditor/ckeditor.js"></script>
+<script>
+     CKEDITOR.replace('yorum');    
+    
+
+</script>
+<script>
+
+    function hata() {
+        var hatayok = true;
+        
+        if ($("#yorum").val=="") {
+            $("#lblCliYorumHata").show();
+            hatayok = false;
+        }
+
+        return hatayok;
+    }
+</script>

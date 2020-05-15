@@ -31,26 +31,32 @@ namespace Sirket_Otomasyon_MVC_ASP.NET.Controllers
         //}
 
         #endregion
+ 
+        
+       
 
-        public ActionResult Yorum()
-        {
-
-            return View();
-        }
         public ActionResult Ekle() //GET KISMI, İSTEK KISMI
         {
-            if ((Session["kullanici"] == null)||(Session["sifre"] == null))
-                // admindecontroller da eklediğmiz session boş ise login sayfasına git
+            
+            if ((Session["kullanici"] == null) || (Session["sifre"] == null))
+            // admindecontroller da eklediğmiz session boş ise login sayfasına git
             {
                 return RedirectToAction("Login", "Admin");
             }
+
 
             return View();
         }
         [HttpPost]
         public ActionResult Ekle(Musteri m)
         {
-           
+
+
+            if ((Session["kullanici"] == null) || (Session["sifre"] == null))
+
+            {
+                return RedirectToAction("Login", "Admin");
+            }
             try
                 {
                     if (ModelState.IsValid) //geçerli bir değermi ekrandaki hata mesjlarını göstermek için validation için
@@ -83,6 +89,12 @@ namespace Sirket_Otomasyon_MVC_ASP.NET.Controllers
         }
         public ActionResult Liste()
         {
+
+            if ((Session["kullanici"] == null) || (Session["sifre"] == null))
+
+            {
+                return RedirectToAction("Login", "Admin");
+            }
             using (ctx = new SirketContext())
             {
                 var musteriler = ctx.Musteriler.ToList(); // dbseti to list diyip listeye çeviriyıruz
@@ -94,6 +106,12 @@ namespace Sirket_Otomasyon_MVC_ASP.NET.Controllers
         [HttpGet]
         public ActionResult Duzenle(int? id) //nullable id değerini aldık hangi eleman olduğubu anlamak için
         {
+
+            if ((Session["kullanici"] == null) || (Session["sifre"] == null))
+
+            {
+                return RedirectToAction("Login", "Admin");
+            }
             using (ctx = new SirketContext())
             {
                 var musteri = ctx.Musteriler.Find(id);
@@ -104,6 +122,12 @@ namespace Sirket_Otomasyon_MVC_ASP.NET.Controllers
         [HttpPost]
         public ActionResult Duzenle(Musteri m)//musterinin dbset de musterinin statesinin değiştirilmesi lazım
         {
+
+            if ((Session["kullanici"] == null) || (Session["sifre"] == null))
+
+            {
+                return RedirectToAction("Login", "Admin");
+            }
             using (ctx = new SirketContext())
             {
                 //giriş metoduna m atıp durumunu değiştirildi yapaırz
@@ -121,6 +145,12 @@ namespace Sirket_Otomasyon_MVC_ASP.NET.Controllers
 
         public ActionResult Sil(int? id)
         {
+
+            if ((Session["kullanici"] == null) || (Session["sifre"] == null))
+
+            {
+                return RedirectToAction("Login", "Admin");
+            }
             using (ctx = new SirketContext())
             {
                 ctx.Musteriler.Remove(ctx.Musteriler.Find(id));

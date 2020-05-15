@@ -21,14 +21,18 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li> <!--MENÜ ELEMANI VE LİNK EKLEME-->
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                   
-                    @if ((Session["kullanici"] != null)&&(Session["sifre"] != null))/*Oturum açılmışsa menü elemanlaı açılır*/
+                    
+                    <li>@Html.ActionLink("Admin", "Login", "Admin")</li>
+                    <li>@Html.ActionLink("Yorum Ekle", "Yorum", "Yorum")</li>
+                    <li>@Html.ActionLink("Yorumlar", "Oku", "Yorum")</li>
+
+                    @if ((Session["kullanici"] != null) && (Session["sifre"] != null))/*Oturum açılmışsa menü elemanlaı açılır*/
                     {
 
                         <li>@Html.ActionLink("Musteri Ekle", "Ekle", "Musteri")</li>
                         <li>@Html.ActionLink("Musteri Liste", "Liste", "Musteri")</li>
+                        <li>@Html.ActionLink("Urun Ekle", "Ekle", "Urun")</li>
+                        <li>@Html.ActionLink("Urun Liste", "Liste", "Urun")</li>
                     }
 
                 </ul>

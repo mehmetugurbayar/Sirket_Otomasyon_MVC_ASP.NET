@@ -1,0 +1,56 @@
+﻿@using Sirket_Otomasyon_MVC_ASP.NET.Models
+@model IEnumerable<Yorum>
+
+@{
+    ViewBag.Title = "Yapılan Yorumlar";
+}
+
+<h2>Yapılan Yorumlar</h2>
+
+<div class="row bootstrap snippets">
+    <div class="col-md-6 col-md-offset-2 col-sm-12">
+        <div class="comment-wrapper">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    Yorumlar
+                </div>
+
+
+                <div class="clearfix"></div>
+                <hr>
+                <ul class="media-list">
+
+
+
+                    @foreach (var item in Model)
+                    {
+                        <li class="media">
+                            <div class="panel-body">
+                                <a href="#" class="pull-left">
+                                    <img src="https://bootdey.com/img/Content/user_1.jpg" alt="" class="img-circle">
+                                </a>
+                                <div class="media-body">
+                                    <span class="text-muted pull-right">
+                                        <small class="text-muted">30 min ago</small>
+                                    </span>
+                                    <strong class="text-success">@item.yorumID &nbsp; @Html.Raw(item.yorumBaslik)</strong>
+
+                                    &nbsp;&nbsp;  <p>@Html.Raw(item.yorum)</p>
+                                    <div style=" position: absolute; right: 25px;">
+                                        <a href="/Yorum/Sil/@item.yorumID" class="btn btn-sm btn-danger"  onclick="return confirm('Bu yorumu silmek istedğinizden emin misini?')">Sil</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    }
+
+
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+

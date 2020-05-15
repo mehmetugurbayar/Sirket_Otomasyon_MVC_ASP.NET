@@ -19,11 +19,22 @@ namespace Sirket_Otomasyon_MVC_ASP.NET.Controllers
         }
         public ActionResult Ekle()
         {
+
+            if ((Session["kullanici"] == null) || (Session["sifre"] == null))
+
+            {
+                return RedirectToAction("Login", "Admin");
+            }
             return View();
         }
         [HttpPost]
         public ActionResult Ekle(Urun u)
         {
+            if ((Session["kullanici"] == null) || (Session["sifre"] == null))
+
+            {
+                return RedirectToAction("Login", "Admin");
+            }
             if (ModelState.IsValid) 
             {
                 using (ctx = new SirketContext())
@@ -41,6 +52,12 @@ namespace Sirket_Otomasyon_MVC_ASP.NET.Controllers
         }
         public ActionResult Liste()
         {
+
+            if ((Session["kullanici"] == null) || (Session["sifre"] == null))
+
+            {
+                return RedirectToAction("Login", "Admin");
+            }
             using (ctx = new SirketContext())
             {
                 var urunler = ctx.Urunler.ToList(); 
@@ -52,6 +69,11 @@ namespace Sirket_Otomasyon_MVC_ASP.NET.Controllers
         [HttpGet]
         public ActionResult Duzenle(int? id) 
         {
+            if ((Session["kullanici"] == null) || (Session["sifre"] == null))
+            
+            {
+                return RedirectToAction("Login", "Admin");
+            }
             using (ctx = new SirketContext())
             {
                 var urun = ctx.Urunler.Find(id);
@@ -62,15 +84,25 @@ namespace Sirket_Otomasyon_MVC_ASP.NET.Controllers
         [HttpPost]
         public ActionResult Duzenle(Urun u)
         {
+
+            if ((Session["kullanici"] == null) || (Session["sifre"] == null))
+
+            {
+                return RedirectToAction("Login", "Admin");
+            }
             using (ctx = new SirketContext())
             {
-                
-                ctx.Entry(u).State = EntityState.Modified;
 
-                if (ctx.SaveChanges() > 0)
+                if (ModelState.IsValid)
                 {
 
-                    return RedirectToAction("Liste");
+                    ctx.Entry(u).State = EntityState.Modified;
+
+                    if (ctx.SaveChanges() > 0)
+                    {
+
+                        return RedirectToAction("Liste");
+                    }
                 }
                 return View();
 
@@ -79,6 +111,12 @@ namespace Sirket_Otomasyon_MVC_ASP.NET.Controllers
 
         public ActionResult Sil(int? id)
         {
+
+            if ((Session["kullanici"] == null) || (Session["sifre"] == null))
+
+            {
+                return RedirectToAction("Login", "Admin");
+            }
             using (ctx = new SirketContext())
             {
                 ctx.Urunler.Remove(ctx.Urunler.Find(id));

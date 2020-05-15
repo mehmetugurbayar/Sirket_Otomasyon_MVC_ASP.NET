@@ -17,7 +17,7 @@ namespace Sirket_Otomasyon_MVC_ASP.NET.Models
         public string urunAd { get; set; }
         [Display(Name = "Stok Miktarı")]
         [Required(ErrorMessage = "Miktar alanı boş olamaz!")]
-        public string stokMik{ get; set; }
+        public string stokMik { get; set; }
         [Display(Name = "Ürün Fiyatı")]
         [Required(ErrorMessage = "Fiyat alanı boş olamaz!")]
         public string fiyat{ get; set; }

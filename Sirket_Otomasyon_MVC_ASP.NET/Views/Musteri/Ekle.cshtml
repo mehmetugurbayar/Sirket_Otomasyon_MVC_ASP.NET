@@ -15,13 +15,13 @@ html helpersları IIS server yorumluyor*/
 
     <div class="form-group">
         @Html.LabelFor(m => m.musteriAd) <!--html hlpr modellenerek gelmesini de saplıyor-->
-        @Html.TextBoxFor(m => m.musteriAd, new { @class = "form-control" }) <!--helpers ile class ekleme-->
+        @Html.TextBoxFor(m => m.musteriAd, new { @class = "form-control", maxlength=15 }) <!--helpers ile class ekleme-->
         @Html.ValidationMessageFor(m => m.musteriAd) <!--boş girilen değer varsa mesaj göster (SERVER SIDE VALIDATION)-->
         <label id="lblAdHata" style="display:none;color:red">Bu alan boş olamaz!</label> <!--Clien Side Validation göstermek için-->
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.musteriSoyad)
-        @Html.TextBoxFor(m => m.musteriSoyad, new { @class = "form-control" })
+        @Html.TextBoxFor(m => m.musteriSoyad, new { @class = "form-control", maxlength=15 })
         @Html.ValidationMessageFor(m => m.musteriSoyad)
         <label id="lblSoyadHata" style="display:none;color:red;">Bu alan boş olamaz!</label>
     </div>
@@ -29,13 +29,13 @@ html helpersları IIS server yorumluyor*/
 
     <div class="form-group">
         @Html.LabelFor(m => m.musteriTel)
-        @Html.TextBoxFor(m => m.musteriTel, new { @class = "form-control" })
+        @Html.TextBoxFor(m => m.musteriTel, new { @class = "form-control", maxlength=15 })
         @Html.ValidationMessageFor(m => m.musteriTel)
         <label id="lblTelHata" style="display:none;color:red;">Bu alan boş olamaz!</label>
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.musteriAdres)
-        @Html.TextAreaFor(m => m.musteriAdres, new { @class = "form-control", @rows = "3" })
+        @Html.TextAreaFor(m => m.musteriAdres, new { @class = "form-control", @rows = "3" , maxlength=15})
         @Html.ValidationMessageFor(m => m.musteriAdres)
         <label id="lblAdresHata" style="display:none;color:red;">Bu alan boş olamaz!</label>
     </div>
